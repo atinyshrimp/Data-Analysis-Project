@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="description" content="API for the Python for Data Analysis project">
+        <title>Avila's Bible API for Classification</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <!-- using inline CSS -->
+    <body style="background-color: #1f1e1c; color: #f4edde">
+        <h1>Welcome to The Avila's Bible's Classification API</h1>
+
+        <form class="container-lg" action="/prediction_result" method="POST" target="_blank">
+            <div class="mb-4">
+                <label for="distance" class="form-label">Intercolumnar Distance</label>
+                <input type="number" class="form-control" id="distance" name="intercolumnar distance">
+            </div>
+            <div class="mb-4">
+                <label for="u_margin" class="form-label">Upper margin</label>
+                <input type="number" class="form-control" id="u_margin" name="upper margin">
+            </div>
+            <div class="mb-4">
+                <label for="l_margin" class="form-label">Lower margin</label>
+                <input type="number" class="form-control" id="l_margin" name="lower margin">
+            </div>
+            <div class="mb-4">
+                <label for="exploitation" class="form-label">Exploitation</label>
+                <input type="number" class="form-control" id="exploitation" name="exploitation">
+            </div>
+            <div class="mb-4">
+                <label for="row_nb" class="form-label">Row number</label>
+                <input type="number" class="form-control" id="row_nb"name="row number">
+            </div>
+            <div class="mb-4">
+                <label for="mod_ratio" class="form-label">Modular ratio</label>
+                <input type="number" class="form-control" id="mod_ratio" name="modular ratio">
+            </div>
+            <div class="mb-4">
+                <label for="int_spacing" class="form-label">Interlinear spacing</label>
+                <input type="number" class="form-control" id="int_spacing" name="interlinear spacing">
+            </div>
+            <div class="mb-4">
+                <label for="weight" class="form-label">Weight</label>
+                <input type="number" class="form-control" id="weight" name="weight">
+            </div>
+            <div class="mb-4">
+                <label for="peak_nb" class="form-label">Peak number</label>
+                <input type="number" class="form-control" id="peak_nb" name="peak number">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </body>
+</html>
