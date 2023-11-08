@@ -3,7 +3,7 @@ import xgboost as xgb
 import sys, os
 from flask import Flask, request, render_template
 from scipy.stats import zscore
-import pickle
+import numpy as np
 
 app = Flask(__name__)
 
@@ -42,7 +42,18 @@ def preprocess(features):
 
 def get_prediction(features):
     clean_df = preprocess(features)
-    return xgb_model.predict(clean_df)
+
+    def get_predicted_class(df):
+        classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'W', 'X', 'Y']
+        predictions = xgb_model.predict(xgb.DMatrix(df))[0]
+        predictions = np.array(predictions)
+
+        predicted_class = classes[predictions.argmax()]
+        probability = predictions.max() * 100
+
+        return f'class {predicted_class} ({probability:.2f}%)'
+
+    return get_predicted_class(clean_df)
 
 if __name__ == '__main__':
     app.run(debug=True)
