@@ -8,7 +8,7 @@ import pickle
 app = Flask(__name__)
 
 # Load the model from the notebook
-xgb_model = pickle.load(open('xgb_model.pkl', 'rb'))
+xgb_model = xgb.Booster(model_file='best_model.model')
 
 @app.route('/')
 def index():
@@ -31,13 +31,14 @@ def predict():
             return f'Error: {exc_type}\n{fname}\n{exc_tb.tb_lineno}\n{str(e)}'
 
 def preprocess(features):
-    df = pd.DataFrame.from_dict(features)
-    df.values = df.values.astype(float)
+    typed_features = {k: float(v) for k, v in features.items()}
+    df = pd.DataFrame(typed_features, index=[0])
+    df['modular ratio / interlinear spacing'] = df['modular ratio'] / df['interlinear spacing']
 
-    # Need to apply z-normalization on data
-    df.values = zscore(df.values)
+    # Need to apply z-normalization on data as it's been applied on the training data
+    z_df = zscore(df, axis=1)
 
-    return df
+    return z_df
 
 def get_prediction(features):
     clean_df = preprocess(features)
