@@ -30,9 +30,12 @@ def predict():
             print(exc_type, fname, exc_tb.tb_lineno)
             return f'Error: {exc_type}\n{fname}\n{exc_tb.tb_lineno}\n{str(e)}'
 
+
 def preprocess(features):
     typed_features = {k: float(v) for k, v in features.items()}
     df = pd.DataFrame(typed_features, index=[0])
+
+    # adding the last feature thanks to the input data
     df['modular ratio / interlinear spacing'] = df['modular ratio'] / df['interlinear spacing']
 
     # Need to apply z-normalization on data as it's been applied on the training data
@@ -40,18 +43,22 @@ def preprocess(features):
 
     return z_df
 
+
+def get_predicted_class(df):
+    # List of class labels
+    classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'W', 'X', 'Y']
+    predictions = xgb_model.predict(xgb.DMatrix(df))[0]
+    predictions = np.array(predictions)
+
+    # Find the index of the class with the highest probability
+    predicted_class = classes[predictions.argmax()]
+    probability = predictions.max() * 100
+
+    return (predicted_class, round(probability, 2))
+
+
 def get_prediction(features):
     clean_df = preprocess(features)
-
-    def get_predicted_class(df):
-        classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'W', 'X', 'Y']
-        predictions = xgb_model.predict(xgb.DMatrix(df))[0]
-        predictions = np.array(predictions)
-
-        predicted_class = classes[predictions.argmax()]
-        probability = predictions.max() * 100
-
-        return f'class {predicted_class} ({probability:.2f}%)'
 
     return get_predicted_class(clean_df)
 
