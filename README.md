@@ -30,9 +30,13 @@ The 10 features include attributes like intercolumnar distance, upper margin, lo
 ### Dependencies
 List of dependencies required to run the project.
 * PIP
-```pip install matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap```
+```
+pip install matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap
+```
 * Conda
-```conda install -c conda-forge matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap```
+```
+conda install -c conda-forge matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap
+```
 
 ### Task Progress
 
