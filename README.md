@@ -27,19 +27,36 @@ The 10 features include attributes like intercolumnar distance, upper margin, lo
 - X: 522
 - Y: 266
 
+### Dependencies
+List of dependencies required to run the project.
+* PIP
+```
+pip install matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap
+```
+* Conda
+```
+conda install -c conda-forge matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap
+```
+
 ### Task Progress
 
 #### Data Pre-processing
-***to do***
+According to the provided documentation, the training and test datasets have already been split and normalized (with Z-normalization). I encoded the class labels into numerical values. The data cleaning was not needed as there was no missing values, and they were in the right format.\
+These steps ensure that the data is ready for modeling.
 
 #### Data Visualization
-***to do***
+![model metrics](static/class_distribution.png)
+![model metrics](static/feature_corr.png)
 
 #### Modeling
-***to do***
+![model metrics](static/model_metrics_comparison.png)
+![model explanation](static/xgb_prediction_explained.png)
 
 #### API
-***to do***
+##### API Endpoints
+- `/`: Home page
+- `/prediction_result`: Endpoint for getting predictions
+![api teaser](static/api_prediction.png)
 
 ### Conclusions
 ***to do***
