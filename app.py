@@ -32,6 +32,19 @@ def predict():
 
 
 def preprocess(features):
+    """Gets and prints the spreadsheet's header columns
+
+    Parameters
+    ----------
+    features : dict
+        The values of the features used for the prediction
+
+    Returns
+    -------
+    z_df
+        a dataframe containing the input features in the right format and normalized
+    """
+    
     typed_features = {k: float(v) for k, v in features.items()}
     df = pd.DataFrame(typed_features, index=[0])
 
@@ -45,6 +58,19 @@ def preprocess(features):
 
 
 def get_predicted_class(df):
+    """Gets and prints the spreadsheet's header columns
+
+    Parameters
+    ----------
+    df : DataFrame
+        A dataframe containing the input features in the right format and normalized
+
+    Returns
+    -------
+    tuple
+        the first element being a character representing the predicted class, the second being the probability of reliability
+    """
+
     # List of class labels
     classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'W', 'X', 'Y']
     predictions = xgb_model.predict(xgb.DMatrix(df))[0]
@@ -58,6 +84,18 @@ def get_predicted_class(df):
 
 
 def get_prediction(features):
+    """Gets and prints the spreadsheet's header columns
+
+    Parameters
+    ----------
+    features : dict
+        The values of the features used for the prediction
+
+    Returns
+    -------
+    get_predicted_class(clean_df)
+    """
+
     clean_df = preprocess(features)
 
     return get_predicted_class(clean_df)
