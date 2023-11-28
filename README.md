@@ -38,6 +38,9 @@ pip install matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn sh
 conda install -c conda-forge matplotlib seaborn pandas numpy panel plotly xgboost scikit-learn shap
 ```
 
+#### Notebook
+Before diving into the steps I went through for the project, if you just want to see the notebook, it is possible [here](https://nbviewer.org/github/atinyshrimp/Data-Analysis-Project/blob/main/Data_manipulation_for_final_project.ipynb).
+
 ### Task Progress
 
 #### Data Pre-processing
@@ -60,15 +63,20 @@ These steps ensure that the data is ready for modeling.
 | Y | 11 |
 
 #### Some Data Visualizations
+
 ![class distribution](static/class_distribution.png)\
+
 This bar plot clearly show an **imbalanced dataset**, which we already knew about thanks to the description provided by the paleographists. But, putting this information on a picture speaks more to the human brain.\
 \
 ![features_distribution](static/feature_distribution_per_class.png)\
+
 I also chose to study how the features are distributed over the dataset, but while separating this study by the different classes within the dataset.
 
 #### Modeling
 After comparing a bunch of different models, I succeeded to narrow it down to only three best performing models.
+
 ![model metrics](static/model_metrics_comparison.png)\
+
 This plot shows the performance of three different classification models after tuning on a dataset. The models are XGBoost, Random Forest, and Bagging.\
 The metrics used to evaluate the models are **Matthews Correlation Coefficient (MCC)**, **F1 score**, and **Precision**.\
 It is obvious that all three models have good performance on the dataset, with MCC scores above 0.8.\
@@ -78,7 +86,15 @@ However, ***XGBoost*** outperforms the other two models on all three metrics. Na
 ##### API Endpoints
 - `/`: Home page
 - `/prediction_result`: Endpoint for getting predictions
+
+  
 ![api teaser](static/api_prediction.png)
+
+\
+Paste this in your cmd to run the Flask app
+```
+python app.py
+```
 
 ### Conclusions
 This project aimed to predict the copyist behind each manuscript using machine learning techniques applied to distinctive textual features. The key outcomes and insights obtained from this analysis are highlighted below:
