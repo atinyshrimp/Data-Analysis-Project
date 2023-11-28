@@ -39,7 +39,8 @@ conda install -c conda-forge matplotlib seaborn pandas numpy panel plotly xgboos
 ```
 
 #### Notebook
-Before diving into the steps I went through for the project, if you just want to see the notebook, it is possible [here](https://nbviewer.org/github/atinyshrimp/Data-Analysis-Project/blob/main/Data_manipulation_for_final_project.ipynb).
+Before diving into the steps I went through for the project, if you just want to see the notebook, it is possible [here](https://nbviewer.org/github/atinyshrimp/Data-Analysis-Project/blob/main/Data_manipulation_for_final_project.ipynb).\
+Note that interactions with widgets from the *Panel* library will not be possible.
 
 ### Task Progress
 
