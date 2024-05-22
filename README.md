@@ -65,9 +65,9 @@ These steps ensure that the data is ready for modeling.
 
 #### Some Data Visualizations
 
-![class distribution](static/class_distribution.png)\
+![class distribution](static/class_distribution.png)
 
-This bar plot clearly show an **imbalanced dataset**, which we already knew about thanks to the description provided by the paleographists. But, putting this information on a picture speaks more to the human brain.\
+This bar plot clearly shows an **imbalanced dataset**, which we already knew about thanks to the description provided by the paleographists. But, putting this information on a picture speaks more to the human brain.\
 \
 ![features_distribution](static/feature_distribution_per_class.png)
 
